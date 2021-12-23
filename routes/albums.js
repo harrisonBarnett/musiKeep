@@ -3,6 +3,8 @@ const router = express.Router()
 
 const Album = require('../models/Album')
 const Artist = require('../models/Artist')
+const { findOne } = require('../models/Review')
+const Review = require('../models/Review')
 
 // add an album
 router.post('/add', async (req, res) => {
@@ -13,24 +15,25 @@ router.post('/add', async (req, res) => {
             res.redirect('/albums')
         } else {
             // album does not yet exist in db
-            let albumData = {
-                title: req.body.title,
-                artist: req.body.artist,
-                artist_id: 0
-            }
-            const foundArtist = await Artist.findOne({name: req.body.artist}).exec()
+            var foundArtist = await Artist.findOne({name: req.body.artist}).exec()
             if(!foundArtist) {
                 // dynamically add artist to db if not yet exists
-                let newArtist = new Artist(
+                 foundArtist = new Artist(
                     {
                         name: req.body.artist
                     }
                 )
-                newArtist.save().then(result => albumData.artist_id = result._id)
+                foundArtist.save()
             } else {
                 albumData.artist_id = foundArtist._id
             }
-            let newAlbum = new Album(albumData)
+            let newAlbum = new Album(
+                {
+                    title: req.body.title,
+                    artist: req.body.artist,
+                    artist_id: foundArtist._id
+                }
+            )
             newAlbum.save()
             res.redirect('/albums')
         }
@@ -43,7 +46,8 @@ router.post('/add', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const albums = await Album.find({}).exec()
-        res.json({albums})
+        // res.json({albums})
+        res.render('albums', {albums: albums})
     } catch (error) {
         console.error(error)
     }
@@ -52,8 +56,10 @@ router.get('/', async (req, res) => {
 // return one album
 router.get('/:id', async (req, res) => {
     try {
-        const album = Album.findOne({_id: req.params.id}).exec()
-        res.json({album})
+        const album = await Album.findOne({_id: req.params.id}).exec()
+        const reviews = await Review.find({album: album.title}).exec()
+        res.render('album_detail', {album: album, reviews: reviews})
+
     } catch (error) {
         console.error(error)
     }

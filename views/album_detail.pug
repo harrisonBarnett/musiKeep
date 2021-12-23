@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+    h1 _#{album.title}
+    h3 #{album.artist}
+
+    each review in reviews
+        .review-group 
+            p #{review.description}

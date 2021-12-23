@@ -1,0 +1,12 @@
+extends layout 
+
+block content 
+    h1 _ALBUMS
+
+    each album in albums
+        .album-group 
+            .album-art  
+                p coming soon
+            .album-info
+                a(href=(album.url)) _#{album.title}
+                p _#{album.artist_id}
