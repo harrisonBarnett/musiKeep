@@ -1,5 +1,5 @@
 body {
-  padding: 40px;
+  padding: 4rem 2rem;
 }
 *, ::before, ::after {
   padding: 0;
@@ -7,15 +7,36 @@ body {
   text-decoration: none;
   list-style: none;
 }
+/* navigation */
+.nav-bar {
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 1rem;
+  background: lightgray;
+}
+
 /* INDEX / MASTER REVEIWS LIST */
 /* review form */
 .review-form {
   width: 20%;
   max-width: 400px;
   position: fixed;
-  top: 1rem;
-  right: 1rem;
+  top: 4rem;
+  right: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+/* review card */
+.review-group {
+  width: 20%;
+  max-width: 400px;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid rgba(200, 200, 200, .5);
+  box-shadow: 2px 2px 4px rgba(0,0,0,.05);
 }
