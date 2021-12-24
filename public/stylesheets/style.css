@@ -7,22 +7,15 @@ body {
   text-decoration: none;
   list-style: none;
 }
-
-/* ALBUMS */
-.album-group {
+/* INDEX / MASTER REVEIWS LIST */
+/* review form */
+.review-form {
+  width: 20%;
+  max-width: 400px;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
   display: flex;
-  gap: .5rem;
-  margin: 1rem 0;
-
-}
-.album-art {
-  height: 100px;
-  width: 100px;
-  background: gray;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.album-info {
-  margin-top: auto;
+  flex-direction: column;
+  gap: 1rem;
 }

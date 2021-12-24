@@ -49,7 +49,7 @@ router.post('/add', async (req, res) => {
             }
         )
         newReview.save()
-        res.redirect('/reviews')
+        res.redirect('/')
     } catch (error) {
         console.error(error)
     }
@@ -59,7 +59,7 @@ router.post('/add', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const reviews = await Review.find({}).exec()
-        res.json({reviews})
+        res.render('reviews', {reviews})
     } catch (error) {
         console.error(error)
     }

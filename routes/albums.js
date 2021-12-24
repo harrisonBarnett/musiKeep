@@ -44,8 +44,8 @@ router.post('/add', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const albums = await Album.find({}).exec()
-        res.json({albums})
-        // res.render('albums', {albums: albums})
+        // res.json({albums})
+        res.render('albums', {albums: albums})
     } catch (error) {
         console.error(error)
     }
