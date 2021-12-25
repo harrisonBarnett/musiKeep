@@ -9,7 +9,7 @@ body {
 }
 /* navigation */
 .nav-bar {
-  padding: 1rem;
+  padding: 1rem 2rem;
   position: fixed;
   top: 0;
   left: 0;
