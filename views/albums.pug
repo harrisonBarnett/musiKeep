@@ -5,7 +5,6 @@ block content
 
     each album in albums
         .album-group 
-            .album-info
-                a(href=(album.url)) _#{album.title}
-                a(href=('/artists/' + album.artist._id)) #{album.artist}
-                p _#{album.artist_id}
+            a(href=('/artists/' + album.artist_id)) #{album.artist}
+            a(href=(album.url)) _#{album.title}
+            
