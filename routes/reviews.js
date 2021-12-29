@@ -65,4 +65,13 @@ router.get('/', async (req, res) => {
     }
 })
 
+// delete a review
+router.delete('/:id', async (req, res) => {
+    res.send('delete request')
+})
+
+// update a review
+router.put('/:id', async (req, res) => {
+    res.send('put request')
+})
 module.exports = router
