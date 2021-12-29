@@ -41,6 +41,11 @@ body {
   box-shadow: 2px 2px 4px rgba(0,0,0,.05);
 }
 /* album card */
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
 .album-group {
   display: flex;
   flex-direction: column;

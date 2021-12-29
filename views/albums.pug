@@ -3,8 +3,9 @@ extends layout
 block content 
     h1 _ALBUMS
 
-    each album in albums
-        .album-group 
-            a(href=('/artists/' + album.artist_id)) #{album.artist}
-            a(href=(album.url)) _#{album.title}
+    .album-grid
+        each album in albums
+            .album-group 
+                a(href=('/artists/' + album.artist_id)) #{album.artist}
+                a(href=(album.url)) _#{album.title}
             
