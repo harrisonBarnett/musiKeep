@@ -29,7 +29,7 @@ router.post('/add', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const artists = await Artist.find({}).exec()
-        res.json({artists})
+        res.render('artists', {artists: artists})
     } catch (error) {
         console.error(error)
     }
@@ -44,6 +44,16 @@ router.get('/:id', async (req, res) => {
     } catch (error) {
         console.error(error)
     }
+})
+
+// delete an artist and all associated albums and reviews
+router.delete('/:id', async (req, res) => {
+    res.send('delete request')
+})
+
+// update an artist
+router.put('/:id', async (req, res) => {
+    res.send('update request')
 })
 
 module.exports = router

@@ -1,0 +1,16 @@
+extends layout 
+
+block content 
+    h1 _ARTISTS
+
+    .artist-grid 
+        each artist in artists 
+            .artist-group 
+                p #{artist.name}
+                .artist-update-group 
+                    form(action=`/artists/${artist._id}?_method=DELETE` method="POST") 
+                        input(type="hidden" name="_method" value="DELETE")
+                        button(type="submit") delete 
+                    form(action=`/artists/${artist_id}?_method=PUT` method="POST") 
+                        input(type="hidden" name="_method" value="PUT")
+                        button(type="submit") update
