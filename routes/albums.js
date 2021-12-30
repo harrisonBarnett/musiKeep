@@ -3,7 +3,6 @@ const router = express.Router()
 
 const Album = require('../models/Album')
 const Artist = require('../models/Artist')
-const { findOne } = require('../models/Review')
 const Review = require('../models/Review')
 
 // add an album
@@ -51,6 +50,16 @@ router.get('/', async (req, res) => {
     }
 })
 
+// return all reviews of an album
+router.get('/reviews/:id', async (req, res) => {
+    try {
+        const reviews = await Review.find({album_id: req.params.id}).exec()
+        res.json(reviews)
+    } catch (error) {
+        console.error(error)
+    }
+})
+
 // return one album
 router.get('/:id', async (req, res) => {
     try {
@@ -61,6 +70,16 @@ router.get('/:id', async (req, res) => {
     } catch (error) {
         console.error(error)
     }
+})
+
+// delete an album and all associated reviews
+router.delete('/:id', async (req, res) => {
+    res.send('delete request')
+})
+
+// update a review
+router.put('/:id', async (req, res) => {
+    res.send('put request')
 })
 
 module.exports = router
