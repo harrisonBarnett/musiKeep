@@ -6,7 +6,7 @@ block content
     .artist-grid 
         each artist in artists 
             .artist-group 
-                p #{artist.name}
+                a(href=`/artists/${artist._id}`)  #{artist.name}
                 .artist-update-group 
                     form(action=`/artists/${artist._id}?_method=DELETE` method="POST") 
                         input(type="hidden" name="_method" value="DELETE")

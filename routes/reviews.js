@@ -54,7 +54,6 @@ router.post('/add', async (req, res) => {
         console.error(error)
     }
 })
-
 // return all reviews
 router.get('/', async (req, res) => {
     try {
@@ -64,10 +63,23 @@ router.get('/', async (req, res) => {
         console.error(error)
     }
 })
-
+// return a single review 
+router.get('/:id', async (req, res) => {
+    try {
+        const review = await Review.findOne({_id: req.params.id}).exec()
+        res.render('review_detail', {review: review})
+    } catch (error) {
+        console.error(error)
+    }
+})
 // delete a review
 router.delete('/:id', async (req, res) => {
-    res.send('delete request')
+    try {
+        Review.deleteOne({_id: req.params.id}).remove().exec()
+        res.redirect('/')
+    } catch (error) {
+        console.error(error)
+    }
 })
 
 // update a review

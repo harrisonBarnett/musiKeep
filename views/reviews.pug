@@ -16,11 +16,7 @@ block content
             p #{review.artist}
             p #{review.description}
 
-            .review-update-group 
-                form(action=`/reviews/${review._id}?_method=DELETE` method="POST") 
-                    input(type="hidden" name="_method" value="DELETE")
-                    button(type="submit") delete
-                form(action=`/reviews/${review._id}?_method=PUT` method="POST") 
-                    input(type="hidden" name="_method" value="PUT")
-                    button(type="submit") update
+            a(href=`/reviews/${review._id}`) view detail
+
+
 

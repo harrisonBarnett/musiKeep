@@ -1,0 +1,14 @@
+extends layout 
+
+block content 
+    h1 _manage this review
+
+    p #{review.artist}
+
+    .review-update-group 
+    form(action=`/reviews/${review._id}?_method=DELETE` method="POST") 
+        input(type="hidden" name="_method" value="DELETE")
+        button(type="submit") delete
+    form(action=`/reviews/${review._id}?_method=PUT` method="POST") 
+        input(type="hidden" name="_method" value="PUT")
+        button(type="submit") update

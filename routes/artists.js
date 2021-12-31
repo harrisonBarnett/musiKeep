@@ -3,6 +3,7 @@ const router = express.Router()
 
 const Artist = require('../models/Artist')
 const Review = require('../models/Review')
+const Album = require('../models/Album')
 
 // add artist
 router.post('/add', async (req, res) => {
@@ -40,7 +41,8 @@ router.get('/:id', async (req, res) => {
     try {
         const artist = await Artist.findOne({_id: req.params.id}).exec()
         const reviews = await Review.find({artist_id: req.params.id}).exec()
-        res.render('artist_detail', {artist: artist, reviews: reviews})
+        const albums = await Album.find({artist_id: req.params.id}).exec()
+        res.render('artist_detail', {artist: artist, reviews: reviews, albums: albums})
     } catch (error) {
         console.error(error)
     }
