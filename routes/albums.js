@@ -19,7 +19,9 @@ router.post('/add', async (req, res) => {
                 // dynamically add artist to db if not yet exists
                  foundArtist = new Artist(
                     {
-                        name: req.body.artist
+                        name: req.body.artist,
+                        date_added: Date.now(),
+                        date_modified: Date.now()
                     }
                 )
                 foundArtist.save()
@@ -28,7 +30,9 @@ router.post('/add', async (req, res) => {
                 {
                     title: req.body.title,
                     artist: req.body.artist,
-                    artist_id: foundArtist._id
+                    artist_id: foundArtist._id,
+                    date_added: Date.now(),
+                    date_modified: Date.now()
                 }
             )
             newAlbum.save()
@@ -42,7 +46,7 @@ router.post('/add', async (req, res) => {
 // return all albums
 router.get('/', async (req, res) => {
     try {
-        const albums = await Album.find({}).exec()
+        const albums = await Album.find({}).sort('-date_modified').exec()
         // res.json({albums})
         res.render('albums', {albums: albums})
     } catch (error) {

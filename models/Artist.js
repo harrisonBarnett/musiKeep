@@ -3,7 +3,9 @@ const Schema = mongoose.Schema
 
 const ArtistSchema = new Schema(
     {
-        name: {type: String, required: true}
+        name: {type: String, required: true},
+        date_added: {type: Date, required: true},
+        date_modified: {type: Date, required: true}
     }
 )
 ArtistSchema.virtual('url').get(function() {

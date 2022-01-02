@@ -13,7 +13,9 @@ router.post('/add', async (req, res) => {
         if(!artist) {
             let newArtist = new Artist(
                 {
-                    name: req.body.name
+                    name: req.body.name,
+                    date_added: Date.now(),
+                    date_modified: Date.now()
                 }
             )
             newArtist.save()
@@ -29,7 +31,7 @@ router.post('/add', async (req, res) => {
 // return all aritsts
 router.get('/', async (req, res) => {
     try {
-        const artists = await Artist.find({}).exec()
+        const artists = await Artist.find({}).sort('-date_modified').exec()
         res.render('artists', {artists: artists})
     } catch (error) {
         console.error(error)

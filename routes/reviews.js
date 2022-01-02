@@ -21,7 +21,9 @@ router.post('/add', async (req, res) => {
             // dynamically add new artist to db
             foundArtist = new Artist(
                 {
-                    name: req.body.artist
+                    name: req.body.artist,
+                    date_added: Date.now(),
+                    date_modified: Date.now()
                 }
             )
             foundArtist.save()
@@ -33,7 +35,9 @@ router.post('/add', async (req, res) => {
                 {
                     title: req.body.title,
                     artist: req.body.artist,
-                    artist_id: foundArtist._id
+                    artist_id: foundArtist._id,
+                    date_added: Date.now(),
+                    date_modified: Date.now()
                 }
             )
             foundAlbum.save()
@@ -45,7 +49,9 @@ router.post('/add', async (req, res) => {
                 artist: req.body.artist,
                 description: req.body.description,
                 album_id: foundAlbum._id,
-                artist_id: foundArtist._id
+                artist_id: foundArtist._id,
+                date_added: Date.now(),
+                date_modified: Date.now()
             }
         )
         newReview.save()
@@ -57,7 +63,7 @@ router.post('/add', async (req, res) => {
 // return all reviews
 router.get('/', async (req, res) => {
     try {
-        const reviews = await Review.find({}).exec()
+        const reviews = await Review.find({}).sort('-date_modified').exec()
         res.render('reviews', {reviews})
     } catch (error) {
         console.error(error)

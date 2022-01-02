@@ -7,7 +7,9 @@ const ReviewSchema = new Schema(
         artist: {type: String, required: true},
         description: {type: String, required: true},
         album_id: {type: String, required: true},
-        artist_id: {type: String, required: true}
+        artist_id: {type: String, required: true},
+        date_added: {type: Date, required: true},
+        date_modified: {type: Date, required: true}
     }
 )
 ReviewSchema.virtual('url').get(function() {
