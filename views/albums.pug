@@ -8,7 +8,6 @@ block content
             .album-group 
                 a(href=('/artists/' + album.artist_id)) #{album.artist}
                 a(href=(album.url)) _#{album.title}
-                a(href="/albums/reviews/" + album._id) all reviews 
                 .album-update-group 
                     form(action=`/albums/${album._id}?_method=DELETE` method="POST") 
                         input(type="hidden" name="_method" value="DELETE")

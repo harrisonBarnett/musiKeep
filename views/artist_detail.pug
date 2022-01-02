@@ -4,11 +4,12 @@ block content
     h1 _#{artist.name}
     
     h3 albums by #{artist.name}
-    each album in albums
-        .album-group 
-                a(href=('/artists/' + album.artist_id)) #{album.artist}
-                a(href=(album.url)) _#{album.title}
-                a(href="/albums/reviews/" + album._id) all reviews 
+    .album-grid
+        each album in albums
+            .album-group 
+                    a(href=('/artists/' + album.artist_id)) #{album.artist}
+                    a(href=(album.url)) _#{album.title}
+                    a(href="/albums/reviews/" + album._id) all reviews 
     h3 recent reviews
     each review in reviews
         .review-group 

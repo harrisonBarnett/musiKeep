@@ -31,7 +31,7 @@ router.post('/add', async (req, res) => {
 // return all aritsts
 router.get('/', async (req, res) => {
     try {
-        const artists = await Artist.find({}).sort('-date_modified').exec()
+        const artists = await Artist.find({}).sort('name').exec()
         res.render('artists', {artists: artists})
     } catch (error) {
         console.error(error)
@@ -42,8 +42,8 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const artist = await Artist.findOne({_id: req.params.id}).exec()
-        const reviews = await Review.find({artist_id: req.params.id}).exec()
-        const albums = await Album.find({artist_id: req.params.id}).exec()
+        const reviews = await Review.find({artist_id: req.params.id}).sort('-date_modified').exec()
+        const albums = await Album.find({artist_id: req.params.id}).sort('title').exec()
         res.render('artist_detail', {artist: artist, reviews: reviews, albums: albums})
     } catch (error) {
         console.error(error)

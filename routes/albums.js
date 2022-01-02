@@ -47,18 +47,7 @@ router.post('/add', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const albums = await Album.find({}).sort('-date_modified').exec()
-        // res.json({albums})
         res.render('albums', {albums: albums})
-    } catch (error) {
-        console.error(error)
-    }
-})
-
-// return all reviews of an album
-router.get('/reviews/:id', async (req, res) => {
-    try {
-        const reviews = await Review.find({album_id: req.params.id}).exec()
-        res.json(reviews)
     } catch (error) {
         console.error(error)
     }
@@ -68,7 +57,7 @@ router.get('/reviews/:id', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const album = await Album.findOne({_id: req.params.id}).exec()
-        const reviews = await Review.find({album: album.title}).exec()
+        const reviews = await Review.find({album: album.title}).sort('-date_modified').exec()
         res.render('album_detail', {album: album, reviews: reviews})
 
     } catch (error) {
