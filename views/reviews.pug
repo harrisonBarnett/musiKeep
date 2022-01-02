@@ -6,8 +6,7 @@ block content
         h2 _recent reviews
         each review in reviews 
             .review-group 
-                p #{review.album}
-                p #{review.artist}
+                p #{review.album} - #{review.artist}
                 p #{review.description}
 
                 a(href=`/reviews/${review._id}`) view detail

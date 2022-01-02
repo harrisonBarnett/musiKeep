@@ -41,7 +41,6 @@ a:hover {
 .review-container {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
 /* review card */
 .review-group {
@@ -49,6 +48,9 @@ a:hover {
   padding: 2rem 0;
   width: 100%;
   border-bottom: 1px solid lightgray;
+}
+.review-group:hover {
+  background: lightgray;
 }
 .review-group a {
   position: absolute;
@@ -72,7 +74,10 @@ a:hover {
   gap: 1rem;
   width: 15vmax;
   height: 15vmax;
-  border: 1px solid rgba(150, 150, 150, .5);
+  border: 1px solid lightgray;
+}
+.album-group:hover {
+  background: lightgray;
 }
 .album-group-meta {
   margin: .5rem;
@@ -91,7 +96,6 @@ a:hover {
 .artist-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
 .artist-group {
   position: relative;
@@ -103,7 +107,7 @@ a:hover {
 .artist-update-group {
   position: absolute;
   bottom: .5rem;
-  right: .5rem;
+  left: 0;
   display: flex;
   gap: .25rem;
 }
