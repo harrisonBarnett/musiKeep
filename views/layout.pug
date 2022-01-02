@@ -5,11 +5,19 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
 
   nav.nav-bar
+    h1 music_keep
     .nav-logo 
       a(href='/') home 
     .nav-item 
       a(href='/artists') artists 
     .nav-item 
       a(href='/albums') albums 
+
+  form(action="/reviews/add" method="POST").review-form
+    h3 add a review
+    input(type="text" name="title" placeholder="album title")  
+    input(type="text" name="artist" placeholder="album artist")  
+    textarea(wrap="soft" name="description" placeholder="your take:").show-placeholder
+    button(type="submit") submit
   body
-    block content
+    block content 

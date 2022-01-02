@@ -1,22 +1,16 @@
 extends layout 
 
 block content 
-    h1 music_keep
 
-    form(action="/reviews/add" method="POST").review-form
-        h3 add a review
-        input(type="text" name="title" placeholder="album title")  
-        input(type="text" name="artist" placeholder="album artist")  
-        textarea(wrap="soft" name="description" placeholder="your take:").show-placeholder
-        button(type="submit") submit
+    .review-container
+        h2 _recent reviews
+        each review in reviews 
+            .review-group 
+                p #{review.album}
+                p #{review.artist}
+                p #{review.description}
 
-    each review in reviews 
-        .review-group 
-            p #{review.album}
-            p #{review.artist}
-            p #{review.description}
-
-            a(href=`/reviews/${review._id}`) view detail
+                a(href=`/reviews/${review._id}`) view detail
 
 
 

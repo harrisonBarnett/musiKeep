@@ -46,7 +46,7 @@ router.post('/add', async (req, res) => {
 // return all albums
 router.get('/', async (req, res) => {
     try {
-        const albums = await Album.find({}).sort('-date_modified').exec()
+        const albums = await Album.find({}).sort('title').exec()
         res.render('albums', {albums: albums})
     } catch (error) {
         console.error(error)

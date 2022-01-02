@@ -1,13 +1,14 @@
 extends layout 
 
 block content 
-    h1 _ALBUMS
 
+    h2.album-header _albums
     .album-grid
         each album in albums
             .album-group 
-                a(href=('/artists/' + album.artist_id)) #{album.artist}
-                a(href=(album.url)) _#{album.title}
+                .album-group-meta
+                    a(href=(album.url)) _#{album.title}
+                    a(href=('/artists/' + album.artist_id)) #{album.artist}
                 .album-update-group 
                     form(action=`/albums/${album._id}?_method=DELETE` method="POST") 
                         input(type="hidden" name="_method" value="DELETE")

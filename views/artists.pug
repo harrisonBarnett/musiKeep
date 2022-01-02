@@ -1,9 +1,9 @@
 extends layout 
 
 block content 
-    h1 _ARTISTS
 
-    .artist-grid 
+    .artist-list 
+        h2 _artists
         each artist in artists 
             .artist-group 
                 a(href=`/artists/${artist._id}`)  #{artist.name}
