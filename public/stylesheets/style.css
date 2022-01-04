@@ -31,14 +31,30 @@ body {
   flex-direction: column;
   gap: 1rem;
 }
+.no-review-alert {
+  margin-top: 1rem;
+}
 a {
   color: black;
 }
 a:hover {
   color: gray;
 }
+button {
+  padding: .25rem .5rem;
+  background: none;
+  border: 1px solid lightgray;
+}
+button:hover {
+  cursor: pointer;
+  background: lightgray;
+}
+input, textarea {
+  border: 1px solid lightgray;
+}
 /* INDEX / MASTER REVEIWS LIST */
 .review-container {
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
 }
@@ -47,6 +63,9 @@ a:hover {
   position: relative;
   padding: 2rem 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   border-bottom: 1px solid lightgray;
 }
 .review-group:hover {
@@ -58,6 +77,10 @@ a:hover {
   bottom: .5rem;
 }
 /* update/delete review */
+.review-manage-container {
+  margin-top: 1rem;
+  position: relative;
+}
 .manage-form {
   width: 100%;
   max-width: 400px;
@@ -65,12 +88,16 @@ a:hover {
   flex-direction: column;
   gap: 1rem;
 }
+.review-delete-btn {
+  margin-top: 1rem;
+}
 /* ALBUMS */
 .album-header {
   margin-bottom: 1rem;
 }
 /* album card */
 .album-grid {
+  margin-top: 1rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
@@ -80,15 +107,15 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 15vmax;
-  height: 15vmax;
+  width: 10vmax;
+  height: 10vmax;
   border: 1px solid lightgray;
 }
 .album-group:hover {
   background: lightgray;
 }
 .album-group-meta {
-  margin: .5rem;
+  margin: .25rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -99,6 +126,11 @@ a:hover {
   right: .5rem;
   display: flex;
   gap: .25rem;
+}
+.album-detail-title {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; 
 }
 /* ARTISTS */
 .artist-list {

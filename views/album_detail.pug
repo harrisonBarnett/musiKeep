@@ -1,9 +1,18 @@
 extends layout 
 
 block content 
-    h1 _#{album.title}
-    h3 #{album.artist}
+    .album-detail-title
+        h2 _#{album.title}
+        h3 by #{album.artist}
+    if reviews.length != 0
+        .review-container
+            h2 _recent reviews
+            each review in reviews 
+                .review-group 
+                    p #{review.album} - #{review.artist}
+                    p #{review.description}
 
-    each review in reviews
-        .review-group 
-            p #{review.description}
+                    a(href=`/reviews/${review._id}`) view detail
+    else 
+        .no-review-alert
+            p be the first to add a review

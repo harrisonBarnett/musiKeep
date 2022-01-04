@@ -1,17 +1,23 @@
 extends layout 
 
 block content 
-    h1 _#{artist.name}
     
     h3 albums by #{artist.name}
     .album-grid
         each album in albums
             .album-group 
+                .album-group-meta
                     a(href=('/artists/' + album.artist_id)) #{album.artist}
                     a(href=(album.url)) _#{album.title}
-                    a(href="/albums/reviews/" + album._id) all reviews 
-    h3 recent reviews
-    each review in reviews
-        .review-group 
-            p #{review.album}
-            p #{review.description}
+    if reviews.length != 0
+        .review-container
+                h2 _recent reviews
+                each review in reviews 
+                    .review-group 
+                        p #{review.album} - #{review.artist}
+                        p #{review.description}
+
+                        a(href=`/reviews/${review._id}`) view detail
+    else 
+        .no-review-alert
+            p be the first to add a review
