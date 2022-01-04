@@ -90,6 +90,14 @@ router.delete('/:id', async (req, res) => {
 
 // update a review
 router.put('/:id', async (req, res) => {
-    res.send('put request')
+    try {
+    await Review.updateOne({_id: req.params.id}, {
+        description: req.body.description,
+        date_modified: Date.now()
+    })
+    res.redirect('/')
+    } catch (error) {
+        console.error(error)
+    }
 })
 module.exports = router
